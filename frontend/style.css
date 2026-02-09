@@ -1,0 +1,526 @@
+/* ============================================
+   CALCULATOR STYLE.CSS
+   Styling untuk interface kalkulator modern
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   VARIABLES & ROOT STYLES
+   ============================================ */
+
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #ec4899;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-light: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--background) 0%, #1a1f3a 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   CONTAINER & LAYOUT
+   ============================================ */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: slideDown 0.6s ease;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header .subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* ============================================
+   CALCULATOR MAIN SECTION
+   ============================================ */
+
+.calculator-container {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+  animation: slideUp 0.6s ease;
+}
+
+/* Display Section */
+.display-section {
+  margin-bottom: 25px;
+}
+
+.display {
+  background: var(--background);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 2px solid var(--surface-light);
+  overflow: hidden;
+}
+
+.display-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  text-align: right;
+  font-weight: 600;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+.display-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.info-box {
+  background: rgba(99, 102, 241, 0.1);
+  border-left: 4px solid var(--primary-color);
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+#operation-info {
+  margin: 0;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.number-pad,
+.advanced-operations {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.advanced-operations .button-group {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Buttons */
+.btn {
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Number Button */
+.btn-number {
+  background: var(--surface-light);
+  color: var(--text-primary);
+  border: 2px solid transparent;
+}
+
+.btn-number:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-number:active {
+  transform: translateY(0);
+}
+
+/* Operator Button */
+.btn-operator {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.btn-operator:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+}
+
+.btn-operator:active {
+  transform: translateY(0);
+}
+
+/* Clear Button */
+.btn-clear {
+  background: linear-gradient(135deg, var(--danger-color), var(--warning-color));
+  color: white;
+  grid-column: span 1;
+}
+
+.btn-clear:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Equals Button */
+.btn-equals {
+  background: linear-gradient(135deg, var(--success-color), #06b6d4);
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.btn-equals:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-equals:active {
+  transform: translateY(0);
+}
+
+/* Action Button */
+.btn-action {
+  background: var(--surface-light);
+  color: var(--text-primary);
+  width: 100%;
+}
+
+.btn-action:hover {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   ACTION BUTTONS SECTION
+   ============================================ */
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#btn-backspace {
+  flex: 1;
+  background: linear-gradient(135deg, var(--warning-color), var(--danger-color));
+  color: white;
+}
+
+#btn-backspace:hover {
+  box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+}
+
+/* ============================================
+   HISTORY SECTION
+   ============================================ */
+
+.history-section {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  animation: slideUp 0.8s ease;
+}
+
+.history-section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.history-list {
+  background: var(--background);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 2px solid var(--surface-light);
+}
+
+.history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: var(--surface-light);
+  border-radius: 10px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.history-item {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: rgba(99, 102, 241, 0.1);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  animation: slideIn 0.3s ease;
+}
+
+.history-item-operation {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.history-item-result {
+  color: var(--success-color);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.empty-history {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 20px;
+  font-style: italic;
+}
+
+#btn-clear-history {
+  background: var(--danger-color);
+  color: white;
+  width: 100%;
+}
+
+#btn-clear-history:hover {
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* ============================================
+   STATUS SECTION
+   ============================================ */
+
+.status-section {
+  background: var(--surface);
+  border-radius: var(--border-radius);
+  padding: 20px 25px;
+  box-shadow: var(--box-shadow);
+  animation: slideUp 1s ease;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.status p {
+  margin: 0;
+}
+
+.status-text {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.status-text.processing {
+  color: var(--warning-color);
+}
+
+.status-text.error {
+  color: var(--danger-color);
+}
+
+/* ============================================
+   LOADING INDICATOR
+   ============================================ */
+
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.loading-indicator.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(99, 102, 241, 0.3);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.loading-indicator p {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .calculator-container,
+  .history-section,
+  .status-section {
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .display-input {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .advanced-operations .button-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .display-input {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
